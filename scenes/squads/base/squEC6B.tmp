@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dccxl35cpve2t"]
+
+[ext_resource type="Script" path="res://scripts/squads/base/squad.gd" id="1_qh6l5"]
+
+[node name="Squad" type="Node2D"]
+script = ExtResource("1_qh6l5")
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="CenterPositionMarker" type="Marker2D" parent="Positions"]
+
+[node name="BotPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(0, 20)
+
+[node name="TopPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(0, -28)
+
+[node name="TopLeftPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(-12, -16)
+
+[node name="BotLeftPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(-11, 10)
+
+[node name="BotRightPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(16, 10)
+
+[node name="TopRightPositionMarker" type="Marker2D" parent="Positions"]
+position = Vector2(16, -16)

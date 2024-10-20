@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://kl3xang23wjk"]
+
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_h11ge"]
+[ext_resource type="Texture2D" uid="uid://dybk7q23vxj02" path="res://assets/Menu&UI/Image of skelet c2f47971-fc93-4c79-ab89-c44c88a2bbf6.png" id="2_sc3tn"]
+
+[sub_resource type="FontVariation" id="FontVariation_m1ogr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enjji"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h11ge")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -799.0
+offset_right = 2022.0
+offset_bottom = 1264.0
+texture = ExtResource("2_sc3tn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -63.0
+offset_right = 373.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = -84.0
+offset_right = 171.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.780392, 0.141176, 0, 1)
+theme_override_colors/font_outline_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = SubResource("FontVariation_m1ogr")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/normal = SubResource("StyleBoxTexture_enjji")
+text = "De EVIL
+"
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"

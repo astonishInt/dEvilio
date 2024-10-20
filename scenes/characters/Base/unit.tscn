@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxtix4a73d3wx"]
+
+[ext_resource type="Script" path="res://scripts/characters/Base/unit.gd" id="1_35h8u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uk4h"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_35h8u")
+
+[node name="UnitAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3uk4h")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
