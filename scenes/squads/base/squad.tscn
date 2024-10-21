@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dccxl35cpve2t"]
+[gd_scene load_steps=8 format=3 uid="uid://dccxl35cpve2t"]
 
 [ext_resource type="Script" path="res://scripts/squads/base/squad.gd" id="1_qh6l5"]
 [ext_resource type="PackedScene" uid="uid://bc8fsh41fwsy8" path="res://scenes/base/state_machine.tscn" id="2_omaxi"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/attack_ally.gd" id="3_cnned"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/follow_ally.gd" id="4_17oqn"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/idle_ally.gd" id="5_gp4hk"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/move_to_ally.gd" id="6_w4d80"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/retreat_ally.gd" id="7_7jied"]
 
 [node name="Squad" type="Node2D"]
 script = ExtResource("1_qh6l5")
@@ -29,3 +34,38 @@ position = Vector2(-11, 10)
 position = Vector2(0, 20)
 
 [node name="SquadStateMachine" parent="." instance=ExtResource("2_omaxi")]
+
+[node name="attack" type="Node" parent="SquadStateMachine" node_paths=PackedStringArray("idle_state", "follow_state", "move_to_state", "retreat_state")]
+script = ExtResource("3_cnned")
+idle_state = NodePath("../idle")
+follow_state = NodePath("../follow")
+move_to_state = NodePath("../move_to")
+retreat_state = NodePath("../retreat")
+
+[node name="follow" type="Node" parent="SquadStateMachine" node_paths=PackedStringArray("idle_state", "move_to_state", "attack_state", "retreat_state")]
+script = ExtResource("4_17oqn")
+idle_state = NodePath("../idle")
+move_to_state = NodePath("../move_to")
+attack_state = NodePath("../attack")
+retreat_state = NodePath("../retreat")
+
+[node name="idle" type="Node" parent="SquadStateMachine" node_paths=PackedStringArray("attack_state", "follow_state", "move_to_state", "retreat_state")]
+script = ExtResource("5_gp4hk")
+attack_state = NodePath("../attack")
+follow_state = NodePath("../follow")
+move_to_state = NodePath("../move_to")
+retreat_state = NodePath("../retreat")
+
+[node name="move_to" type="Node" parent="SquadStateMachine" node_paths=PackedStringArray("idle_state", "follow_state", "attack_state", "retreat_state")]
+script = ExtResource("6_w4d80")
+idle_state = NodePath("../idle")
+follow_state = NodePath("../follow")
+attack_state = NodePath("../attack")
+retreat_state = NodePath("../retreat")
+
+[node name="retreat" type="Node" parent="SquadStateMachine" node_paths=PackedStringArray("idle_state", "follow_state", "move_to_state", "attack_state")]
+script = ExtResource("7_7jied")
+idle_state = NodePath("../idle")
+follow_state = NodePath("../follow")
+move_to_state = NodePath("../move_to")
+attack_state = NodePath("../attack")

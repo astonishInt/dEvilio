@@ -1,16 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://bvre6x44opn02"]
+[gd_scene load_steps=29 format=3 uid="uid://bvre6x44opn02"]
 
 [ext_resource type="Script" path="res://scripts/characters/player/PlayerCharacter.gd" id="1_m3ku1"]
 [ext_resource type="Script" path="res://scripts/characters/player/player_character_Input_controller.gd" id="3_l78xi"]
 [ext_resource type="Texture2D" uid="uid://gqduq135onqj" path="res://assets/Characters/skelet_base.png" id="3_shqle"]
-[ext_resource type="PackedScene" uid="uid://dccxl35cpve2t" path="res://scenes/squads/base/squad.tscn" id="3_ti3uh"]
-[ext_resource type="PackedScene" uid="uid://bu5unhtms288w" path="res://scenes/characters/Ally Squad Characters/1_unit_skelet_warrior.tscn" id="4_ffg6g"]
 [ext_resource type="PackedScene" uid="uid://bc8fsh41fwsy8" path="res://scenes/base/state_machine.tscn" id="4_nbdno"]
 [ext_resource type="Script" path="res://scripts/base/state_machine/states/player/idle_player.gd" id="6_kx72s"]
 [ext_resource type="Script" path="res://scripts/base/state_machine/states/player/order_attack.gd" id="7_5pfv7"]
 [ext_resource type="Script" path="res://scripts/base/state_machine/states/player/move_player.gd" id="7_ibcgt"]
 [ext_resource type="Script" path="res://scripts/base/state_machine/states/player/order-retreat.gd" id="8_2t7yx"]
-[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/skills.gd" id="10_14ah3"]
+[ext_resource type="Script" path="res://scripts/base/state_machine/states/allies/skills_ally.gd" id="10_14ah3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icakc"]
 atlas = ExtResource("3_shqle")
@@ -159,6 +157,7 @@ height = 58.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_m3ku1")
+health = 300
 
 [node name="CharacterAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5blxn")
@@ -173,13 +172,6 @@ shape = SubResource("CapsuleShape2D_b22y5")
 [node name="Top" type="Marker2D" parent="SquadPlacments"]
 position = Vector2(0, -100)
 
-[node name="Squad" parent="SquadPlacments/Top" instance=ExtResource("3_ti3uh")]
-health = 12
-damage = 12
-attack_range = 12
-squad_size = 3
-unit_scene = ExtResource("4_ffg6g")
-
 [node name="TopRight" type="Marker2D" parent="SquadPlacments"]
 position = Vector2(90, -90)
 
@@ -191,13 +183,6 @@ position = Vector2(90, 90)
 
 [node name="Down" type="Marker2D" parent="SquadPlacments"]
 position = Vector2(0, 100)
-
-[node name="Squad" parent="SquadPlacments/Down" instance=ExtResource("3_ti3uh")]
-health = 12
-damage = 12
-attack_range = 12
-squad_size = 3
-unit_scene = ExtResource("4_ffg6g")
 
 [node name="DownLeft" type="Marker2D" parent="SquadPlacments"]
 position = Vector2(-90, 90)
