@@ -14,6 +14,9 @@ var is_complete := false
 func enter() -> void:
 	is_complete = false
 	super()
+	for squad in parent.ally_squad:
+		print(squad.squad_state_machine.current_state)
+	
 	await animations.animation_finished
 	is_complete = true
 

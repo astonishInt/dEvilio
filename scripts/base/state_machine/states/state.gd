@@ -12,7 +12,8 @@ var input_component
 var parent: CharacterBody2D
 
 func enter() -> void:
-	animations.play(animation_name)
+	if animation_name:
+		animations.play(animation_name)
 	
 func exit() -> void:
 	pass
